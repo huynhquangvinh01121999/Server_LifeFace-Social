@@ -1,0 +1,32 @@
+{
+  "name": "lifeface-social-media-server",
+  "version": "1.0.0",
+  "description": "this is server api of lifeface social media",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huynhquangvinh01121999/LifeFace-Social-Media-Server.git"
+  },
+  "keywords": [
+    "lifeface",
+    "social",
+    "media"
+  ],
+  "author": "huynhquangvinh01121999",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huynhquangvinh01121999/LifeFace-Social-Media-Server/issues"
+  },
+  "homepage": "https://github.com/huynhquangvinh01121999/LifeFace-Social-Media-Server#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "knex": "^0.95.9",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.12",
+    "sqlite3": "^5.0.2"
+  }
+}

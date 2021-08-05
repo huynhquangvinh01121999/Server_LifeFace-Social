@@ -1,0 +1,135 @@
+CREATE TABLE "accounts" (
+	"AutoId"	INTEGER NOT NULL,
+	"UserName"	TEXT NOT NULL,
+	"PassWord"	TEXT NOT NULL,
+	"PhoneNumber"	TEXT NOT NULL,
+	"Email"	TEXT NOT NULL,
+	"StatusAccountId"	TEXT NOT NULL,
+	"CreateAt"	TEXT,
+	PRIMARY KEY("AutoId" AUTOINCREMENT)
+)
+
+CREATE TABLE "comments" (
+	"AutoId"	INTEGER NOT NULL,
+	"CommentId"	TEXT NOT NULL,
+	"UserId"	TEXT NOT NULL,
+	"Content"	TEXT NOT NULL,
+	"CommenParentId"	TEXT,
+	"StatusCommentId"	TEXT NOT NULL,
+	"CreateAt"	TEXT,
+	"UpdateAt"	TEXT,
+	PRIMARY KEY("AutoId" AUTOINCREMENT)
+)
+
+CREATE TABLE "feels" (
+	"AutoId"	INTEGER NOT NULL,
+	"FeelId"	TEXT NOT NULL,
+	"FeelName"	TEXT NOT NULL,
+	"Description"	TEXT,
+	"CreateAt"	TEXT,
+	"UpdateAt"	TEXT,
+	PRIMARY KEY("AutoId" AUTOINCREMENT)
+)
+
+CREATE TABLE "images" (
+	"AutoId"	INTEGER NOT NULL,
+	"ImageId"	TEXT NOT NULL,
+	"ImageBase"	TEXT NOT NULL,
+	"CreateAt"	TEXT,
+	PRIMARY KEY("AutoId" AUTOINCREMENT)
+)
+
+CREATE TABLE "postcomments" (
+	"AutoId"	INTEGER NOT NULL,
+	"PostId"	TEXT NOT NULL,
+	"CommentId"	TEXT NOT NULL,
+	"StatusCommentId"	TEXT NOT NULL,
+	"Content"	TEXT NOT NULL,
+	"CreateAt"	TEXT,
+	"UpdateAt"	TEXT,
+	PRIMARY KEY("AutoId" AUTOINCREMENT)
+)
+
+CREATE TABLE "postimages" (
+	"AutoId"	INTEGER NOT NULL,
+	"PostId"	TEXT NOT NULL,
+	"ImageId"	TEXT NOT NULL,
+	"CreateAt"	TEXT,
+	PRIMARY KEY("AutoId" AUTOINCREMENT)
+)
+
+CREATE TABLE "posts" (
+	"AutoId"	INTEGER NOT NULL,
+	"PostId"	TEXT NOT NULL,
+	"UserId"	TEXT NOT NULL,
+	"StatusPostId"	TEXT NOT NULL,
+	"Content"	TEXT NOT NULL,
+	"FeelId"	TEXT,
+	"CreateAt"	TEXT,
+	"UpdateAt"	TEXT,
+	PRIMARY KEY("AutoId" AUTOINCREMENT)
+)
+
+CREATE TABLE "posttags" (
+	"AutoId"	INTEGER NOT NULL,
+	"PostId"	TEXT NOT NULL,
+	"UserId"	TEXT NOT NULL,
+	"CreateAt"	TEXT,
+	PRIMARY KEY("AutoId" AUTOINCREMENT)
+)
+
+CREATE TABLE "statusaccounts" (
+	"AutoId"	INTEGER NOT NULL,
+	"StatusAccountId"	TEXT NOT NULL,
+	"StatusName"	TEXT NOT NULL,
+	"Description"	TEXT,
+	"CreateAt"	TEXT,
+	"UpdateAt"	TEXT,
+	PRIMARY KEY("AutoId" AUTOINCREMENT)
+)
+
+CREATE TABLE "statuscomments" (
+	"AutoId"	INTEGER NOT NULL,
+	"StatusCommentId"	TEXT NOT NULL,
+	"StatusName"	TEXT NOT NULL,
+	"Description"	TEXT,
+	"CreateAt"	TEXT,
+	"UpdateAt"	TEXT,
+	PRIMARY KEY("AutoId" AUTOINCREMENT)
+)
+
+CREATE TABLE "statusposts" (
+	"AutoId"	INTEGER NOT NULL,
+	"StatusPostId"	TEXT NOT NULL,
+	"StatusName"	TEXT NOT NULL,
+	"Description"	TEXT,
+	"CreateAt"	TEXT,
+	"UpdateAt"	TEXT,
+	PRIMARY KEY("AutoId" AUTOINCREMENT)
+)
+
+CREATE TABLE "users" (
+	"AutoId"	INTEGER NOT NULL,
+	"UserId"	TEXT NOT NULL,
+	"UserName"	TEXT NOT NULL,
+	"FirstName"	TEXT NOT NULL,
+	"MiddleName"	TEXT NOT NULL,
+	"LastName"	TEXT NOT NULL,
+	"DoB"	TEXT NOT NULL,
+	"Address"	TEXT NOT NULL,
+	"Country"	TEXT NOT NULL,
+	"UpdateAt"	INTEGER,
+	PRIMARY KEY("AutoId" AUTOINCREMENT)
+)
+
+CREATE TABLE "usershares" (
+	"AutoId"	INTEGER NOT NULL,
+	"PostId"	TEXT NOT NULL,
+	"UserId"	TEXT NOT NULL,
+	"StatusPostId"	TEXT NOT NULL,
+	"Content"	TEXT NOT NULL,
+	"FeelId"	TEXT,
+	"CreateAt"	TEXT,
+	"UpdateAt"	TEXT,
+	PRIMARY KEY("AutoId" AUTOINCREMENT)
+)
