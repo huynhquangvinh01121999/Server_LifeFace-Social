@@ -1,6 +1,6 @@
-const knex = requrie("../../database/useDatabase.js");
+const knex = require("../../database/useDatabase.js");
 const rootService = require("../rootServices");
-const timer = requrie("../../configs/datetime.js");
+const timer = require("../../configs/datetime.js");
 
 /**
     CRUD table POST
@@ -14,6 +14,14 @@ function GetPostById(postId) {
   const condition = {
     column: "PostId",
     value: postId,
+  };
+  return rootService.GetById("posts", condition);
+}
+
+function GetPosts_ByUserId(userId) {
+  const condition = {
+    column: "UserId",
+    value: userId,
   };
   return rootService.GetById("posts", condition);
 }
@@ -36,6 +44,12 @@ function UpdatePostById(postId, data) {
   });
 }
 
+function UpdateStatusPost(postId, statusPostId) {
+  return knex("posts").where("PostId", postId).update({
+    StatusPostId: statusPostId,
+  });
+}
+
 function DeletePostById(postId) {
   const condition = {
     column: "PostId",
@@ -47,7 +61,9 @@ function DeletePostById(postId) {
 module.exports = {
   GetPosts,
   GetPostById,
+  GetPosts_ByUserId,
   CreatePost,
   UpdatePostById,
+  UpdateStatusPost,
   DeletePostById,
 };
