@@ -2,12 +2,12 @@ const knex = require("../../database/useDatabase.js");
 const rootService = require("../rootServices");
 const timer = require("../../configs/datetime.js");
 
+const TABLE_NAME = "accounts";
 /**
     CRUD table ACCOUNT
  **/
-
 function GetAccounts() {
-  return rootService.GetAll("accounts");
+  return rootService.GetAll(TABLE_NAME);
 }
 
 function GetAccountByUserName(userName) {
@@ -15,18 +15,18 @@ function GetAccountByUserName(userName) {
     column: "UserName",
     value: userName,
   };
-  return rootService.GetById("posts", condition);
+  return rootService.GetById(TABLE_NAME, condition);
 }
 
 function Auth(auth) {
-  return knex("accounts")
+  return knex(TABLE_NAME)
     .where("UserName", auth.userName)
     .andWhere("PassWord", auth.passWord)
     .select("*");
 }
 
 function CreateAccount(data) {
-  return rootService.Create("accounts", {
+  return rootService.Create(TABLE_NAME, {
     ...data,
     CreateAt: timer.timeNow(),
   });
@@ -37,8 +37,8 @@ function UpdateAccount(userName, data) {
     column: "UserName",
     value: userName,
   };
-  
-  return rootService.UpdateById("accounts", condition, {
+
+  return rootService.UpdateById(TABLE_NAME, condition, {
     ...data,
     UpdateAt: timer.timeNow(),
   });
@@ -49,7 +49,7 @@ function DeleteAccount(userName) {
     column: "UserName",
     value: userName,
   };
-  return rootService.DeleteById("accounts", condition);
+  return rootService.DeleteById(TABLE_NAME, condition);
 }
 
 module.exports = {
