@@ -25,6 +25,13 @@ function Auth(auth) {
     .select("*");
 }
 
+function CheckExistUserName(UserName) {
+  return knex(TABLE_NAME).where("UserName", UserName).select("*");
+}
+function CheckExistEmail(Email) {
+  return knex(TABLE_NAME).where("Email", Email).select("*");
+}
+
 function CreateAccount(data) {
   return rootService.Create(TABLE_NAME, {
     ...data,
@@ -56,6 +63,8 @@ module.exports = {
   GetAccounts,
   GetAccountByUserName,
   Auth,
+  CheckExistUserName,
+  CheckExistEmail,
   CreateAccount,
   UpdateAccount,
   DeleteAccount,

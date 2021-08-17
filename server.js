@@ -7,6 +7,21 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+var options = {
+  inflate: true,
+  limit: "100kb",
+  type: "application/octet-stream",
+};
+app.use(bodyParser.raw(options));
+// USE CORS
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
 Post(app);
 Account(app);
