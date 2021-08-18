@@ -18,6 +18,12 @@ function GetUserByUserId(userId) {
   return rootService.GetById("users", condition);
 }
 
+function GetUserByUserName(userName) {
+  return knex("users")
+    .where("UserName", userName)
+    .select("UserId", "FirstName", "MiddleName", "LastName");
+}
+
 function CreateUser(data) {
   return rootService.Create("users", {
     ...data,
@@ -47,6 +53,7 @@ function DeleteUser(userId) {
 module.exports = {
   GetUsers,
   GetUserByUserId,
+  GetUserByUserName,
   CreateUser,
   UpdateUser,
   DeleteUser,
