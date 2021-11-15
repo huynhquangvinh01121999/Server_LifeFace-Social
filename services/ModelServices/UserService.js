@@ -10,6 +10,10 @@ function GetUsers() {
   return rootService.GetAll("users");
 }
 
+function GetUser_NotMe(userName) {
+  return knex("users").whereNot("UserName", userName).select("*");
+}
+
 function GetUserByUserId(userId) {
   const condition = {
     column: "UserId",
@@ -19,9 +23,14 @@ function GetUserByUserId(userId) {
 }
 
 function GetUserByUserName(userName) {
-  return knex("users")
-    .where("UserName", userName)
-    .select("UserId", "FirstName", "MiddleName", "LastName");
+  const condition = {
+    column: "UserName",
+    value: userName,
+  };
+  return rootService.GetById("users", condition);
+  // return knex("users")
+  //   .where("UserName", userName)
+  //   .select("UserId", "FirstName", "MiddleName", "LastName");
 }
 
 function CreateUser(data) {
@@ -52,6 +61,7 @@ function DeleteUser(userId) {
 
 module.exports = {
   GetUsers,
+  GetUser_NotMe,
   GetUserByUserId,
   GetUserByUserName,
   CreateUser,

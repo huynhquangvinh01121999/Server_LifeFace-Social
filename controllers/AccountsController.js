@@ -5,11 +5,13 @@ const { v4 } = require("uuid");
 var jwt = require("jsonwebtoken");
 require("dotenv").config();
 
+const ACCESS_TOKEN_SERET_KEY = "jwtlogin";
+
 const GetToken = (userName) => {
   return (
     "bearer " +
-    jwt.sign({ username: userName }, process.env.ACCESS_TOKEN_SERET_KEY, {
-      expiresIn: "60s",
+    jwt.sign({ username: userName }, ACCESS_TOKEN_SERET_KEY, {
+      expiresIn: "3600s",
     })
   );
 };
